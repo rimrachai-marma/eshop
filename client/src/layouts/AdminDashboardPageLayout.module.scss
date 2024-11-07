@@ -1,0 +1,59 @@
+@import "../global/mixins.scss";
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+
+  @include respond(tab-port) {
+    grid-template-columns: 8rem 1fr;
+  }
+
+  &__menu {
+    min-height: calc(100vh - 7rem);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+    & ul {
+      list-style: none;
+
+      & li {
+        line-height: normal;
+        padding: 1.2rem 2rem;
+
+        & a {
+          text-decoration: none;
+          color: inherit;
+
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          @include respond(tab-port) {
+            flex-direction: column;
+
+            font-size: 1.4rem;
+            padding: 0 0.5rem;
+          }
+        }
+
+        &.active {
+          background: #eee;
+          &:not(:first-child) {
+            border-top: 1.2px solid #ddd;
+          }
+          border-bottom: 1.2px solid #ddd;
+        }
+      }
+    }
+
+    & .icon {
+      height: 1.5rem;
+      width: auto;
+      fill: #333;
+    }
+  }
+}
+
+.details {
+  padding: 2rem;
+  min-width: 0;
+}

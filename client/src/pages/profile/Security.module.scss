@@ -1,0 +1,73 @@
+.heading {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  font-weight: 100;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.section {
+  padding: 1.5rem 1.8rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  & h3 {
+    color: #333;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+}
+
+.form {
+  & button {
+    height: 3.4rem;
+    width: 100%;
+    border: 1px solid #2d3c50;
+    background-color: transparent;
+    color: #2d3c50;
+    text-align: center;
+    font-size: inherit;
+    font-family: "Open Sans", sans-serif;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+      background-color: #2d3c50;
+      color: #eee;
+    }
+  }
+}
+
+.action-btns {
+  display: flex;
+  gap: 2rem;
+
+  & button {
+    border: none;
+    outline: none;
+    background: none;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    color: #333;
+
+    &:last-child {
+      color: crimson;
+    }
+
+    &:focus,
+    &:active {
+      color: #000;
+
+      &:last-child {
+        color: firebrick;
+      }
+    }
+  }
+}

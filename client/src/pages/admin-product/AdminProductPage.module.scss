@@ -1,0 +1,148 @@
+#admin-product-page {
+  padding: 4rem 0;
+}
+
+.wrapper {
+  max-width: 62rem;
+  background: #fff;
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.heading {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  font-weight: 100;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      color: #333;
+      letter-spacing: 0.08rem;
+      text-transform: capitalize;
+      display: block;
+      transition: all 0.3s;
+    }
+
+    & input:not([type="file"]),
+    & textarea {
+      padding: 1rem 0.8rem;
+      border-radius: 3px;
+      font-size: 1.5rem;
+      letter-spacing: 0.08rem;
+      border: 1.2px solid #999;
+
+      &:focus {
+        outline: 1.2px solid #777;
+      }
+
+      &::-webkit-input-placeholder {
+        color: #999;
+        letter-spacing: 0.08rem;
+        text-transform: capitalize;
+      }
+    }
+
+    & input[type="file"] {
+      display: none;
+    }
+
+    & textarea {
+      max-height: 16rem;
+      min-height: 6rem;
+      resize: vertical;
+    }
+
+    & .image-upload-container {
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+
+      padding: 0.6rem 0.8rem;
+      border: 1.2px solid #999;
+      border-radius: 3px;
+
+      & span {
+        color: #999;
+        letter-spacing: 0.08rem;
+        font-size: 1.5rem;
+      }
+
+      & p {
+        width: 80%;
+        overflow: hidden;
+        font-size: 1.5rem;
+        letter-spacing: 0.08rem;
+      }
+
+      & label {
+        cursor: pointer;
+        border: 2px solid #6c5ce7;
+        padding: 0.2rem 0.7rem;
+        border-radius: 0.2em;
+        background-color: #a29bfe;
+        text-transform: uppercase;
+        color: #eee;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        text-wrap: nowrap;
+
+        transition: all 0.2s ease-in;
+
+        &:hover {
+          background-color: #6c5ce7;
+        }
+      }
+    }
+
+    & > span {
+      font-size: 1.3rem;
+      color: #b40e0e;
+      font-family: "Open Sans", sans-serif;
+      letter-spacing: 0.06rem;
+    }
+  }
+
+  & > button {
+    margin-top: 1rem;
+    height: 4rem;
+    padding: 0 2rem;
+    border-radius: 3px;
+    border: 1px solid #2d3c50;
+    background-color: transparent;
+    color: #2d3c50;
+    text-align: center;
+    font-size: inherit;
+    cursor: pointer;
+    transition: all 0.4s;
+
+    &:hover {
+      background-color: #2d3c50;
+      color: #eee;
+    }
+
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active {
+      background-color: #ccc;
+      color: #555;
+      border-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}

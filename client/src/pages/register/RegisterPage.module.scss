@@ -1,0 +1,26 @@
+#register-page {
+  padding: 4rem 0;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 3rem;
+
+  & a {
+    text-decoration: none;
+  }
+}
+
+.logo {
+  margin: auto;
+  height: 4rem;
+  width: auto;
+}

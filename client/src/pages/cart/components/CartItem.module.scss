@@ -1,0 +1,138 @@
+@import "../../../global/mixins.scss";
+
+.loader-item {
+  padding: 2rem;
+  list-style-type: none;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr 1fr;
+  grid-gap: 1rem;
+
+  align-items: center;
+
+  padding: 1.5rem 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+
+  @include respond(tab-port) {
+    grid-template-columns: 2fr 4fr;
+    align-items: start;
+  }
+
+  &_img {
+    overflow: hidden;
+    border-radius: 2px;
+    background-color: #ccc;
+
+    @include respond(phone) {
+      grid-column: 1 / -1;
+    }
+
+    & a {
+      text-decoration: none;
+    }
+
+    & img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &_title {
+    @include respond(phone) {
+      grid-column: 1 / -1;
+    }
+
+    & a {
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      &:hover {
+        text-decoration: underline;
+      }
+
+      & .name {
+        font-family: "Open Sans", sans-serif;
+        letter-spacing: 0.08rem;
+        font-size: 1.5rem;
+        font-weight: 100;
+        color: #555;
+
+        // cut off text
+        --max-lines: 2;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--max-lines);
+      }
+
+      & .not-available {
+        color: #c51620;
+      }
+    }
+
+    & .qty {
+      color: #777;
+      font-weight: 700;
+      letter-spacing: 0.07rem;
+      & span {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  &_price {
+    font-size: 2.8rem;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 0.07rem;
+    color: #555;
+
+    & span {
+      font-size: 1.4rem;
+      letter-spacing: 0.05rem;
+    }
+
+    @include respond(tab-port) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &_add-and-remove {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 0.3rem;
+
+    & button {
+      padding: 0rem 1rem;
+      cursor: pointer;
+      background-color: #2d3c50;
+      border: none;
+      border-radius: 3px;
+      color: #eee;
+      font-size: 2rem;
+
+      &:last-child {
+        background-color: #c51620;
+      }
+
+      &:active {
+        transform: translateY(0.1rem);
+      }
+    }
+
+    @include respond(tab-port) {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      justify-content: start;
+      gap: 1.2rem;
+    }
+  }
+}

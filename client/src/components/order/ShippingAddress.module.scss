@@ -1,0 +1,19 @@
+.shipping-info {
+  &_group {
+    letter-spacing: 0.08rem;
+    font-style: oblique;
+    font-size: 1.4rem;
+    font-family: "Open Sans", sans-serif;
+
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+
+    & span:first-child {
+      text-transform: capitalize;
+    }
+
+    & span:last-child {
+      color: #777;
+    }
+  }
+}

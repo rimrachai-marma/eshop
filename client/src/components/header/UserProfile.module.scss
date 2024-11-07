@@ -1,0 +1,116 @@
+.user-profile {
+  position: relative;
+}
+
+.profile {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.avater-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  fill: #eee;
+  object-fit: cover;
+}
+
+.avater {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.menu {
+  position: absolute;
+  top: 12rem;
+  right: 0;
+  padding: 1rem 2rem;
+  background-color: #293e58;
+  width: 24rem;
+  box-sizing: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  transition: 0.3s;
+
+  visibility: hidden;
+  opacity: 0;
+
+  & h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1rem 0;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #eee;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.5rem;
+    right: 2.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: #293e58;
+    transform: rotate(45deg);
+  }
+
+  & ul li {
+    list-style: none;
+
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    & a,
+    & button {
+      text-decoration: none;
+      color: #ccc;
+      font-weight: 500;
+      display: inline-block;
+      font-family: "Open Sans", sans-serif;
+      transition: 0.3s;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+    & button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    &:hover .menu-icons {
+      fill: #fff;
+    }
+  }
+}
+
+.menu-icons {
+  max-width: 1.8rem;
+  fill: #ccc;
+  transform: 0.3s;
+}
+
+.menu.active {
+  visibility: visible;
+  opacity: 1;
+  top: 7rem;
+}

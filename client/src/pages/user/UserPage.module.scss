@@ -1,0 +1,42 @@
+#user-page {
+  padding: 4rem 0;
+}
+
+.wrapper {
+  max-width: 62rem;
+  background: #fff;
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  letter-spacing: 0.08rem;
+
+  &:not(:last-child) {
+    margin-bottom: 0.4rem;
+  }
+
+  & span:first-child {
+    color: #777;
+    font-weight: 300;
+  }
+
+  fieldset {
+    border: none;
+
+    & label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+
+      & input {
+        cursor: pointer;
+      }
+    }
+  }
+}

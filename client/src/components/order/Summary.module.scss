@@ -1,0 +1,44 @@
+.summary {
+  letter-spacing: 0.07rem;
+
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 2rem;
+
+  & h1 {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #555;
+    font-weight: 100;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 0 2rem 0 2rem;
+    padding: 1rem 2rem 0 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+
+    & li {
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      &:last-child {
+        font-weight: 700;
+        border-top: 1.5px solid rgba(0, 0, 0, 0.1);
+      }
+
+      padding: 0.5rem;
+      font-size: 1.4rem;
+      font-family: "Open Sans", sans-serif;
+      color: #777;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      & label {
+        text-transform: capitalize;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+#checkout-page {
+  padding: 2rem 0;
+}
+
+.wrapper {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap-reverse;
+  align-items: flex-end;
+}
+
+.detailes {
+  flex-grow: 5;
+  flex-basis: 40rem;
+}
+
+.amount {
+  flex-grow: 2;
+  flex-basis: 20rem;
+
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 2rem;
+}
+
+.checkout-detaile-group {
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+  }
+
+  & h3 {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #555;
+    font-weight: 100;
+    line-height: normal;
+    margin-bottom: 0.4rem;
+  }
+}

@@ -1,0 +1,142 @@
+.card {
+  background-color: #eee;
+  padding: 1.3rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 3px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:hover .card-header img {
+    transform: scale(1.05);
+  }
+}
+
+.card-header {
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  & img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.3s transform ease-in-out;
+  }
+}
+
+.card-body {
+  margin: 1rem 0 0.7rem 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.3rem;
+
+  & a {
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.card-title {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.08rem;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: #333333;
+
+  // cut off text
+  --max-lines: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-size: 2rem;
+  color: #2d3c50;
+}
+.rating {
+  width: 1.6rem;
+  height: auto;
+}
+
+///
+.btn {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn {
+  width: 10rem;
+  height: 3.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: #2d3c50;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background: #232f3e;
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background-color: #ccc;
+    color: #292929;
+    border-color: #ccc;
+    cursor: default;
+  }
+}
+
+.btn-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: translateX(0.9rem);
+  color: #eee;
+}
+
+.btn-icon {
+  position: absolute;
+  border-left: 1.5px solid #eee;
+  transform: translateX(7.4rem);
+  height: 2.3rem;
+  width: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.cart-icon {
+  width: 1.4rem;
+  fill: #eee;
+}

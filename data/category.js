@@ -1,0 +1,157 @@
+const category = [
+  {
+    _id: "657c1e2d1fe57a36e453e93d",
+    name: "Fashion",
+    brands: [],
+  },
+  {
+    _id: "657c1e421fe57a36e453e940",
+    name: "Electronics",
+    brands: [],
+  },
+  {
+    _id: "657c1f101fe57a36e453e943",
+    name: "Clothing",
+    parentCategory: "657c1e2d1fe57a36e453e93d",
+    brands: [],
+  },
+  {
+    _id: "657c1f2e1fe57a36e453e946",
+    name: "Shoes",
+    parentCategory: "657c1e2d1fe57a36e453e93d",
+    brands: [],
+  },
+  {
+    _id: "657c1f451fe57a36e453e949",
+    name: "Watches",
+    parentCategory: "657c1e2d1fe57a36e453e93d",
+    brands: [],
+  },
+  {
+    _id: "657c21621fe57a36e453e94e",
+    name: "Men's Cloting",
+    parentCategory: "657c1f101fe57a36e453e943",
+    brands: [],
+  },
+  {
+    _id: "657c216a1fe57a36e453e951",
+    name: "Women's Cloting",
+    parentCategory: "657c1f101fe57a36e453e943",
+    brands: [],
+  },
+  {
+    _id: "657c21901fe57a36e453e954",
+    name: "Men's Shoes",
+    parentCategory: "657c1f2e1fe57a36e453e946",
+    brands: [],
+  },
+  {
+    _id: "657c219c1fe57a36e453e957",
+    name: "Women's Shoes",
+    parentCategory: "657c1f2e1fe57a36e453e946",
+    brands: [],
+  },
+  {
+    _id: "657c21fb1fe57a36e453e95a",
+    name: "Men's Watches",
+    parentCategory: "657c1f451fe57a36e453e949",
+    brands: ["Rolex", "Titan", "Fastrack", "Casio", "Diesel"],
+  },
+  {
+    _id: "657c22161fe57a36e453e95d",
+    name: "Women's Watches",
+    parentCategory: "657c1f451fe57a36e453e949",
+    brands: ["Rolex", "Titan", "Fastrack", "Casio", "Diesel"],
+  },
+  {
+    _id: "657c233d1fe57a36e453e96a",
+    name: "Computers",
+    parentCategory: "657c1e421fe57a36e453e940",
+    brands: ["Apple", "Google", "Microsoft", "Dell", "Lenovo", "HP", "msi", "ASUS", "acer"],
+  },
+  {
+    _id: "657c23bf1fe57a36e453e96d",
+    name: "Cell Phone & Tablets",
+    parentCategory: "657c1e421fe57a36e453e940",
+    brands: ["Apple", "Google", "Samsung", "Motorola", "Sony", "OnePlus", "Huawei", "Nokia", "Xiaomi", "Realme", "OPPO", "Vivo"],
+  },
+  {
+    _id: "657c24011fe57a36e453e971",
+    name: "Desktops",
+    parentCategory: "657c233d1fe57a36e453e96a",
+    brands: ["Apple", "Dell", "Lenovo", "HP", "msi", "ASUS", "acer"],
+  },
+  {
+    _id: "657c240b1fe57a36e453e974",
+    name: "Laptops",
+    parentCategory: "657c233d1fe57a36e453e96a",
+    brands: ["Apple", "Google", "Microsoft", "Dell", "Lenovo", "HP", "msi", "ASUS", "acer"],
+  },
+  {
+    _id: "657c242e1fe57a36e453e977",
+    name: "Mobiles",
+    parentCategory: "657c23bf1fe57a36e453e96d",
+    brands: ["Apple", "Google", "Samsung", "Motorola", "Sony", "OnePlus", "Huawei", "Nokia", "Xiaomi", "Realme", "OPPO", "Vivo"],
+  },
+  {
+    _id: "657c24431fe57a36e453e97a",
+    name: "Tablets",
+    parentCategory: "657c23bf1fe57a36e453e96d",
+    brands: ["Apple", "Google", "Samsung", "Motorola", "Sony", "OnePlus", "Huawei", "Nokia", "Xiaomi", "Realme", "OPPO", "Vivo"],
+  },
+  {
+    _id: "657c25d11fe57a36e453e97e",
+    name: "Smart Watches",
+    parentCategory: "657c1f451fe57a36e453e949",
+    brands: ["Apple", "Google", "Samsung", "OnePlus", "Xiaomi", "Realme", "Awei", "Lenovo"],
+  },
+  {
+    _id: "657c53bb4dd35e37fa727b79",
+    name: "Software",
+    brands: [],
+  },
+  {
+    _id: "657c54184dd35e37fa727b7c",
+    name: "Operating Systems",
+    parentCategory: "657c53bb4dd35e37fa727b79",
+    brands: [],
+  },
+  {
+    _id: "657c54604dd35e37fa727b7f",
+    name: "Antivirus And Security",
+    parentCategory: "657c53bb4dd35e37fa727b79",
+    brands: [],
+  },
+  {
+    _id: "657c54ec4dd35e37fa727b83",
+    name: "Antivirus",
+    parentCategory: "657c54604dd35e37fa727b7f",
+    brands: [],
+  },
+  {
+    _id: "657c55024dd35e37fa727b86",
+    name: "Internet Security Suites",
+    parentCategory: "657c54604dd35e37fa727b7f",
+    brands: [],
+  },
+  {
+    _id: "657c55174dd35e37fa727b89",
+    name: "Parental Control",
+    parentCategory: "657c54604dd35e37fa727b7f",
+    brands: [],
+  },
+  {
+    _id: "657c56484dd35e37fa727b8e",
+    name: "Business And Office",
+    parentCategory: "657c53bb4dd35e37fa727b79",
+    brands: [],
+  },
+  {
+    _id: "657c57424dd35e37fa727b91",
+    name: "Photography & Graphic Design",
+    parentCategory: "657c53bb4dd35e37fa727b79",
+    brands: [],
+  },
+];
+
+module.exports = category;

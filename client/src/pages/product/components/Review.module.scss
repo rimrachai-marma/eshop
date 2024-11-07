@@ -1,0 +1,153 @@
+.review {
+  margin-top: 1.5rem;
+}
+
+.review-form {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding-bottom: 1.2rem;
+
+  & h1 {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #2d3c50;
+    font-weight: 100;
+  }
+
+  & form {
+    margin-top: 0.5rem;
+
+    & button {
+      margin-top: 0.5rem;
+      height: 3.5rem;
+      padding: 0 3rem;
+      border: 1px solid #2d3c50;
+      color: #555;
+      text-align: center;
+      font-size: 1.5rem;
+      font-family: "Open Sans", sans-serif;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        background-color: #2d3c50;
+        color: #eee;
+      }
+
+      &:disabled,
+      &:disabled:hover,
+      &:disabled:active {
+        background-color: #ccc;
+        color: #555;
+        border-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.form-group {
+  &:not(:last-child) {
+    padding-bottom: 0.5rem;
+  }
+  & label {
+    color: #555;
+    letter-spacing: 0.08rem;
+    margin-left: 1rem;
+    text-transform: capitalize;
+    display: block;
+    transition: all 0.3s;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  & textarea,
+  & select {
+    font-size: 1.5rem;
+    color: #555;
+    letter-spacing: 0.08rem;
+    padding: 0.8rem 1rem;
+    background-color: #d6c6fc;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+
+    &:focus {
+      outline: 1.2px solid #777;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #999;
+      letter-spacing: 0.08rem;
+      text-transform: capitalize;
+    }
+  }
+  & select {
+    cursor: pointer;
+  }
+
+  & textarea {
+    resize: vertical;
+  }
+}
+
+///
+.review-list {
+  padding-top: 1.5rem;
+
+  & h1 {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #2d3c50;
+    font-weight: 100;
+  }
+
+  & ul {
+    margin-top: 0.5rem;
+
+    & li {
+      list-style: none;
+
+      &:not(:last-child) {
+        padding-bottom: 1.2rem;
+      }
+
+      & strong {
+        color: #777;
+        font-family: "Roboto", "Open Sans", sans-serif;
+        font-weight: 100;
+        letter-spacing: 0.08rem;
+        text-transform: capitalize;
+      }
+
+      & span {
+        color: #999;
+        font-size: 1.3rem;
+        letter-spacing: 0.08rem;
+      }
+      & p {
+        margin-top: 0.2rem;
+        font-size: 1.4rem;
+        letter-spacing: 0.07rem;
+        color: #777;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      & .rating {
+        width: 1.5rem;
+        height: auto;
+      }
+    }
+  }
+}
+
+.link-btn {
+  font: inherit;
+  color: red;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

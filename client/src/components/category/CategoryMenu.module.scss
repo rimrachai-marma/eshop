@@ -1,0 +1,280 @@
+#menu {
+  visibility: hidden;
+
+  & .close {
+    position: absolute;
+    top: 2rem;
+    left: 32.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:active {
+      transform: translateY(5%);
+    }
+
+    & svg {
+      fill: #ddd;
+
+      &:hover {
+        fill: #fff;
+      }
+    }
+  }
+
+  & .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  & .overly {
+    background: #fff;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 32rem;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px;
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+}
+#menu[open] {
+  visibility: visible;
+
+  & .backdrop {
+    opacity: 1;
+  }
+
+  & .overly {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#main-menu {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  & ul {
+    list-style: none;
+  }
+
+  & a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    letter-spacing: 0.08rem;
+    color: #333;
+
+    transition: all 0.03s ease-in;
+
+    &:hover {
+      color: #7629ce;
+    }
+  }
+
+  & button svg {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  & .menu-list {
+    position: relative;
+    height: 100%;
+
+    & li {
+      height: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid hsla(0, 0%, 25%, 0.1);
+      }
+
+      & .menu-item-wrapper {
+        padding-left: 1rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > button {
+          align-self: stretch;
+
+          border: none;
+          background: #eee;
+          cursor: pointer;
+
+          display: flex;
+          align-items: center;
+
+          & > svg {
+            fill: #aaaaaa;
+            transition: all 0.03s ease-in;
+
+            &:hover {
+              fill: #777;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .sub-menu-list {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+
+    transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    & .menu-orgin {
+      height: 3.8rem;
+
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      background: #e5e6e7;
+      border-bottom: 1px solid #d5dbdb;
+
+      & > button {
+        align-self: stretch;
+
+        border: none;
+        background: #d3d5d7;
+
+        padding-right: 0.4rem;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+
+        & > svg {
+          fill: #999;
+          transition: all 0.03s ease-in;
+
+          &:hover {
+            fill: #555;
+          }
+        }
+      }
+      & > span {
+        text-decoration: none;
+        letter-spacing: 0.08rem;
+        font-size: 1.6rem;
+        color: #555;
+      }
+    }
+  }
+
+  & .sub-menu-list[open] {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-header {
+  background: #293e58;
+  height: 6rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+  display: flex;
+  align-items: center;
+
+  & a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    text-decoration: none;
+  }
+
+  & .login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & a {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    & .user-icon {
+      fill: #fff;
+      height: 2.5rem;
+      width: auto;
+    }
+  }
+
+  & .profile {
+    width: 3.7rem;
+    height: 3.7rem;
+    border-radius: 50%;
+
+    position: relative;
+    overflow: hidden;
+
+    & svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      fill: #fff;
+    }
+
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    letter-spacing: 0.08rem;
+    line-height: normal;
+
+    & h3 {
+      font-size: 1.7rem;
+      color: #fff;
+    }
+    & span {
+      font-size: 1.3rem;
+      color: #eee;
+      font-family: "Lato", "Open Sans", sans-serif;
+    }
+  }
+}

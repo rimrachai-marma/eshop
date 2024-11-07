@@ -1,0 +1,63 @@
+@import "../../global/mixins.scss";
+
+#header {
+  height: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #293e58;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+  padding: 0 2rem;
+
+  & .menu {
+    font-size: "Open Sans", sans-serif;
+    display: flex;
+    gap: 2rem;
+
+    & nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+      color: #eee;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    & button {
+      font: inherit;
+      color: inherit;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #eee;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.brand-logo {
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & a {
+    display: flex;
+    align-items: center;
+  }
+
+  & img {
+    height: 4rem;
+    width: auto;
+  }
+}

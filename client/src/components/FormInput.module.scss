@@ -1,0 +1,74 @@
+.form-group {
+  margin-bottom: 0.7rem;
+  & input {
+    font-size: 1.5rem;
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    letter-spacing: 0.07rem;
+    padding: 0.8rem 1rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1.2px solid #293e58;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(#000, 0.05);
+      background-color: #e0d4fd; // ddffdd
+      border-bottom: 1.2px solid #8c66e3;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #999;
+      letter-spacing: 0.08rem;
+    }
+  }
+
+  & label {
+    color: #333;
+    letter-spacing: 0.08rem;
+    margin-left: 1rem;
+    display: block;
+    transition: all 0.3s;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+  }
+  & input:placeholder-shown + label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-3rem);
+  }
+
+  & input:-webkit-autofill,
+  & input:-webkit-autofill:hover,
+  & input:-webkit-autofill:focus {
+    border-bottom: 1.2px solid #5afad2;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+.invalid input {
+  border-bottom: 1.2px solid #c00000;
+  background-color: #ffdddd;
+
+  &:focus {
+    border-bottom: 1.2px solid #ff8800;
+    background-color: #fbe8d2;
+  }
+}
+
+.valid input {
+  border-bottom: 1.2px solid #40ff40;
+  background-color: #ddffdd;
+}
+
+.invalid-massage {
+  color: #b40e0e;
+  margin-left: 1rem;
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: 0.07rem;
+}

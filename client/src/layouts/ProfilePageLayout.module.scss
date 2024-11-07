@@ -1,0 +1,128 @@
+@import "../global/mixins.scss";
+
+#profile-page {
+  padding: 4rem 0;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 2rem;
+
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  @include respond(tab-port) {
+    grid-template-columns: none;
+  }
+
+  &__menu {
+    padding: 2rem 0;
+    width: max-content;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    & ul {
+      list-style: none;
+
+      & li {
+        line-height: normal;
+        padding: 1rem 1.5rem;
+
+        & a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        &:first-child {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          & .avatar {
+            position: relative;
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+
+            & .avater-icon {
+              fill: #999;
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+
+            & .avatar-img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+
+            & .hints {
+              background: rgba(0, 0, 0, 0.32);
+              bottom: 0;
+              height: 33%;
+              left: 0;
+              position: absolute;
+              right: 0;
+
+              & .icon {
+                background-image: url(../assets/icons/photo_camera_white_24dp.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 1.2rem 1.2rem;
+                height: 100%;
+                opacity: 0.8;
+              }
+            }
+          }
+
+          & .user-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            & h3 {
+              letter-spacing: 0.07rem;
+              text-transform: capitalize;
+            }
+
+            & span {
+              font-size: 1.3rem;
+              color: #555;
+              font-family: "Lato", "Open Sans", sans-serif;
+            }
+          }
+        }
+
+        &.active {
+          background: #eee;
+          border: 1.2px solid #ddd;
+          border-top-right-radius: 100px;
+          border-bottom-right-radius: 100px;
+
+          @include respond(tab-port) {
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.details {
+  padding: 2rem;
+  min-width: 0;
+}

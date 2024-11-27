@@ -1,21 +1,27 @@
+.category-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  & h2 {
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    font-weight: 100;
+  }
+
   & a {
     color: #eee;
+    border-radius: 3px;
     background: #2d3c50;
     padding: 0.3rem 1rem;
     text-decoration: none;
   }
-}
-
-.heading {
-  font-family: "Open Sans", sans-serif;
-  color: #333;
-  font-weight: 100;
-  margin-bottom: 1.5rem;
 }
 
 .table-wraper {

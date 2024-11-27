@@ -14,7 +14,8 @@ const Pagination = ({ page, pages }) => {
     if (
       location.pathname !== "/products" &&
       !location.pathname.includes("/products/search") &&
-      !location.pathname.includes("/products/category")
+      !location.pathname.includes("/products/category") &&
+      !location.pathname.includes("/admin/dashboard/products")
     ) {
       navigate(`products?pageNumber=${pageNumber}`);
     } else {

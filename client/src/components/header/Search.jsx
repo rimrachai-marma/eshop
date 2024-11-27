@@ -40,39 +40,44 @@ function Search() {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if ((category !== "") & (keyword !== "")) {
-      const searchParam = new URLSearchParams(location.search);
-      searchParam.set("keyword", keyword);
+    if (category === "" && keyword === "") {
+      navigate("/");
 
-      return navigate(`products/category/${category}?${searchParam}`);
-    }
-
-    if (
+      //
+    } else if (
       category === "" &&
       keyword !== "" &&
       !location.pathname.includes("/products/search")
     ) {
-      return navigate(`products/search/${keyword}`);
-    }
+      navigate(`products/search/${keyword}`);
 
-    if (keyword !== "" && location.pathname.includes("/products/search")) {
-      return navigate(`products/search/${keyword + location.search}`);
-    }
+      //
+    } else if (
+      category === "" &&
+      keyword !== "" &&
+      location.pathname.includes("/products/search")
+    ) {
+      navigate(`products/search/${keyword + location.search}`);
 
-    if (category === "" && keyword === "") {
-      return navigate("/");
-    }
+      //
+    } else if (category !== "" && keyword !== "") {
+      const searchParam = new URLSearchParams(location.search);
+      searchParam.set("keyword", keyword);
+      navigate(`products/category/${category}?${searchParam}`);
 
-    if (keyword.length === 0) {
-      search.delete("keyword");
-      setSearch(search, {
-        replace: true,
-      });
+      //
     } else {
-      search.set("keyword", keyword);
-      setSearch(search, {
-        replace: true,
-      });
+      if (keyword.length === 0) {
+        search.delete("keyword");
+        setSearch(search, {
+          replace: true,
+        });
+      } else {
+        search.set("keyword", keyword);
+        setSearch(search, {
+          replace: true,
+        });
+      }
     }
   };
 

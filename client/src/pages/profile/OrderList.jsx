@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import styles from "./OrderList.module.scss";
 import { formatDate } from "../../utilities/formaters";
+import CloseIcon from "../../assets/icons/CloseIcon";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { useGetUserOrdersQuery } from "../../redux/order/orderApiSlice";
 
@@ -45,8 +46,11 @@ const OrderList = () => {
 
                   <td>{order.grandTotal}</td>
                   <td>
-                    {order.isPaid && formatDate(new Date(order.paidAt), options)}
-                    {!order.isPaid && <CloseIcon className={styles["icon-close"]} />}
+                    {order.paidAt &&
+                      formatDate(new Date(order.paidAt), options)}
+                    {!order.paidAt && (
+                      <CloseIcon className={styles["icon-close"]} />
+                    )}
                   </td>
                   <td>{order.status}</td>
                 </tr>

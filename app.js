@@ -1,4 +1,3 @@
-require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const cookieParser = require("cookie-parser");
@@ -56,12 +55,16 @@ app.get("/api/config/tax_rate", (req, res) =>
     taxRate: process.env.TAX_RATE || 10,
   })
 );
-app.get("/api/config/paypal_client_id", (req, res) => res.send(process.env.PAYPAL_CLIENT_ID));
+app.get("/api/config/paypal_client_id", (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "./client/dist")));
 
-  app.get("*", (req, res) => res.sendFile(path.resolve(__dirname, "./", "client", "dist", "index.html")));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "./", "client", "dist", "index.html"))
+  );
 } else {
   app.get("/", (req, res) => res.json({ message: "✅ Server is healthy" }));
 }
@@ -83,7 +86,9 @@ mongoose
     //Listener
     const PORT = process.env.PORT || 8080;
     app.listen(PORT, () =>
-      console.log(`Server running on PORT \x1b[1m${PORT}\x1b[0m\n  \x1b[32m➜\x1b[0m  \x1b[1mLocal:\x1b[0m\t\x1b[36mhttp://localhost:${PORT}\x1b[0m`)
+      console.log(
+        `Server running on PORT \x1b[1m${PORT}\x1b[0m\n  \x1b[32m➜\x1b[0m  \x1b[1mLocal:\x1b[0m\t\x1b[36mhttp://localhost:${PORT}\x1b[0m`
+      )
     );
   })
   .catch((err) => {

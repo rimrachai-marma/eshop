@@ -9,7 +9,9 @@ const Product = require("../models/product");
 // @route   GET /api/products
 // @access  Public
 module.exports.getProducts = asyncHandler(async (req, res) => {
-  const pageSize = process.env.PAGINATION_LIMIT || 12;
+  const pageSize = Number(
+    req.query.pageSize || process.env.PAGINATION_LIMIT || 12
+  );
   const page = Number(req.query.page) || 1;
 
   const query = {};
@@ -59,7 +61,10 @@ module.exports.getProducts = asyncHandler(async (req, res) => {
   //sorting
   let sort = { createdAt: -1 };
 
-  if (req.query.sort && (req.query.order === "asc" || req.query.order === "desc")) {
+  if (
+    req.query.sort &&
+    (req.query.order === "asc" || req.query.order === "desc")
+  ) {
     sort = { [req.query.sort]: req.query.order === "desc" ? -1 : 1 };
   }
 
@@ -168,7 +173,9 @@ module.exports.createReview = asyncHandler(async (req, res) => {
     throw new ErrorResponse("Product not found", 404);
   }
 
-  const alreadyReviewed = product.reviews.find((review) => review.user.toString() === req.user._id.toString());
+  const alreadyReviewed = product.reviews.find(
+    (review) => review.user.toString() === req.user._id.toString()
+  );
 
   if (alreadyReviewed) {
     throw new ErrorResponse("Product already reviewed", 409);
@@ -184,7 +191,9 @@ module.exports.createReview = asyncHandler(async (req, res) => {
 
   product.numReviews = product.reviews.length;
 
-  product.rating = product.reviews.reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+  product.rating =
+    product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+    product.reviews.length;
 
   await product.save();
 
@@ -195,7 +204,8 @@ module.exports.createReview = asyncHandler(async (req, res) => {
 // @route   POST /api/admin/products
 // @access  Private/Admin
 module.exports.createProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, brand, categories, countInStock } = req.body;
+  const { name, price, description, image, brand, categories, countInStock } =
+    req.body;
 
   // VALIDATION
   let errors = {};
@@ -231,7 +241,9 @@ module.exports.createProduct = asyncHandler(async (req, res) => {
     image,
     brand,
     countInStock: countInStock || 0,
-    categories: Array.isArray(categories) ? [...new Set(categories)] : [categories],
+    categories: Array.isArray(categories)
+      ? [...new Set(categories)]
+      : [categories],
     numReviews: 0,
   });
 
@@ -265,9 +277,19 @@ module.exports.updateProduct = asyncHandler(async (req, res) => {
 
   const updates = Object.keys(req.body);
 
-  const allowedUpdates = ["name", "price", "description", "image", "brand", "categories", "countInStock"];
+  const allowedUpdates = [
+    "name",
+    "price",
+    "description",
+    "image",
+    "brand",
+    "categories",
+    "countInStock",
+  ];
 
-  const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
+  const isValidOperation = updates.every((update) =>
+    allowedUpdates.includes(update)
+  );
 
   if (!isValidOperation) {
     throw new ErrorResponse("Invalid updates", 400);
@@ -276,11 +298,17 @@ module.exports.updateProduct = asyncHandler(async (req, res) => {
   let errors = {};
   updates.forEach((update) => {
     if (!["categories", "countInStock"].includes(update) && !req.body[update]) {
-      errors[update] = `${update.charAt(0).toUpperCase() + update.slice(1)} field is required`;
+      errors[update] = `${
+        update.charAt(0).toUpperCase() + update.slice(1)
+      } field is required`;
       console.log(update);
     }
 
-    if (update === "categories" && (!req.body[update] || (Array.isArray(req.body[update]) && req.body[update].length < 1))) {
+    if (
+      update === "categories" &&
+      (!req.body[update] ||
+        (Array.isArray(req.body[update]) && req.body[update].length < 1))
+    ) {
       errors.categories = "Categories field is required";
     }
   });

@@ -1,4 +1,3 @@
-require("dotenv").config();
 const mongoose = require("mongoose");
 
 const users = require("./data/users");
@@ -17,7 +16,9 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((conn) => {
-    console.log(`Mongodb Connected to: ${conn.connection.host}, ${conn.connection.name} on PORT ${conn.connection.port} `);
+    console.log(
+      `Mongodb Connected to: ${conn.connection.host}, ${conn.connection.name} on PORT ${conn.connection.port} `
+    );
   })
   .catch((err) => {
     console.log("Failed to connect to MongoDB,\nError: ", err);

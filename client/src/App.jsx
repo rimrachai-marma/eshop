@@ -1,4 +1,10 @@
-import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
 import RootLayout from "./layouts/RootLayout";
 import Protected from "./components/protected-route/Protected";
@@ -18,7 +24,6 @@ import NotFoundPage from "./pages/not-found/NotFoundPage";
 import OrderDetailesPage from "./pages/order/OrderDetailesPage";
 import ProfilePageLayout from "./layouts/ProfilePageLayout";
 import PersonalInfo from "./pages/profile/PersonalInfo";
-import Address from "./pages/profile/Address";
 import Security from "./pages/profile/Security";
 import OrderList from "./pages/profile/OrderList";
 import AdminLayout from "./layouts/AdminLayout";
@@ -46,7 +51,10 @@ const router = createBrowserRouter(
 
         <Route path="products/search/:keyword" element={<SearchPage />} />
 
-        <Route path="products/category/:category" element={<ProductsCategoryPage />} />
+        <Route
+          path="products/category/:category"
+          element={<ProductsCategoryPage />}
+        />
 
         <Route path="products/:id" element={<ProductPage />}>
           <Route path="review" element={<Review />} />
@@ -92,7 +100,6 @@ const router = createBrowserRouter(
           <Route index element={<PersonalInfo />} />
           <Route path="orders" element={<OrderList />} />
           <Route path="security" element={<Security />} />
-          <Route path="address" element={<Address />} />
         </Route>
       </Route>
 

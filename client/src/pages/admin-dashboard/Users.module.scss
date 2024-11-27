@@ -1,8 +1,70 @@
+.user-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
 .heading {
   font-family: "Open Sans", sans-serif;
   color: #333;
   font-weight: 100;
-  margin-bottom: 1.5rem;
+}
+
+.filter {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  &__right {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__group,
+  & form {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  & select,
+  & input {
+    height: 2.4rem;
+    border-radius: 3px;
+    outline: none;
+    padding: 0 0.5rem;
+    border: 1px solid #293e58;
+  }
+
+  & select {
+    cursor: pointer;
+  }
+
+  & label,
+  & span {
+    font-size: 1.4rem;
+    font-family: "Lato", sans-serif;
+  }
+
+  & button {
+    height: 2.4rem;
+    width: 2.6rem;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    background: #293e58;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .search-icon {
+    height: 1.2rem;
+    width: auto;
+    fill: #fff;
+  }
 }
 
 .table-wraper {

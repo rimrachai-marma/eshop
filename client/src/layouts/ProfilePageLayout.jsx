@@ -53,14 +53,28 @@ export default function ProfilePageLayout() {
             <ul>
               <li>
                 <label className={styles.avatar}>
-                  {user?.avatar && <img className={styles["avatar-img"]} src={`/api/users/${user?._id}/avatar?${imageKey}`} alt="user avatar" />}
+                  {user?.avatar && (
+                    <img
+                      className={styles["avatar-img"]}
+                      src={`/api/users/${user?._id}/avatar?${imageKey}`}
+                      alt="user avatar"
+                    />
+                  )}
 
-                  {!user?.avatar && <UserIcon className={styles["avater-icon"]} />}
+                  {!user?.avatar && (
+                    <UserIcon className={styles["avater-icon"]} />
+                  )}
 
                   <div className={styles.hints}>
                     <div className={styles.icon}></div>
                   </div>
-                  <input onChange={uploadAvatar} id="avatar" name="avatar" hidden type="file" />
+                  <input
+                    onChange={uploadAvatar}
+                    id="avatar"
+                    name="avatar"
+                    hidden
+                    type="file"
+                  />
                 </label>
                 <div className={styles["user-info"]}>
                   <h3 className={styles.name}>{user?.name}</h3>
@@ -70,10 +84,6 @@ export default function ProfilePageLayout() {
 
               <li className={path === "profile" ? styles.active : ""}>
                 <NavLink to="">Personal Info</NavLink>
-              </li>
-
-              <li className={path === "address" ? styles.active : ""}>
-                <NavLink to="address">Address </NavLink>
               </li>
 
               <li className={path === "security" ? styles.active : ""}>

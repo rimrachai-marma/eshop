@@ -25,7 +25,16 @@ function ProductList() {
   const order = search.get("order");
 
   let filter = false;
-  if (keyword || brands || in_stock || rating || min_price || max_price || params.keyword) filter = true;
+  if (
+    keyword ||
+    brands ||
+    in_stock ||
+    rating ||
+    min_price ||
+    max_price ||
+    params.keyword
+  )
+    filter = true;
 
   let query = {};
   if (pageNumber) query.page = pageNumber;
@@ -45,15 +54,25 @@ function ProductList() {
     query.category = params.category;
   }
 
-  const { data: { products, page, pages } = {}, isFetching, error } = useGetProductsQuery(query);
+  const {
+    data: { products, page, pages } = {},
+    isFetching,
+    error,
+  } = useGetProductsQuery(query);
 
   return (
     <div className={styles.wraper}>
-      {error && <ErrorMessage>{error?.data?.message || error?.message}</ErrorMessage>}
+      {error && (
+        <ErrorMessage>{error?.data?.message || error?.message}</ErrorMessage>
+      )}
 
-      {!isFetching && !error && products.length < 1 && <Heading>Not found any product</Heading>}
+      {!isFetching && !error && products.length < 1 && (
+        <Heading>Not found any product</Heading>
+      )}
 
-      {!isFetching && !error && products.length > 0 && filter && <Heading>Products Found</Heading>}
+      {!isFetching && !error && products.length > 0 && filter && (
+        <Heading>Products Found</Heading>
+      )}
 
       {isFetching && (
         <div className={styles.products}>
@@ -71,7 +90,9 @@ function ProductList() {
         </div>
       )}
 
-      {!isFetching && !error && products.length > 0 && <Pagination page={page} pages={pages} />}
+      {!isFetching && !error && products.length > 0 && (
+        <Pagination page={page} pages={pages} />
+      )}
     </div>
   );
 }

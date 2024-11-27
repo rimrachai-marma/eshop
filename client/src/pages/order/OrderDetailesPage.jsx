@@ -51,7 +51,7 @@ export default function OrderDetailesPage() {
             <div className={styles["order-detaile-group"]}>
               <h3>payment</h3>
 
-              {order?.isPaid ? (
+              {order?.paidAt ? (
                 <p>
                   Paid with {order?.paymentMethod} on&nbsp;
                   {formatDate(new Date(order?.paidAt ?? 0), options)}

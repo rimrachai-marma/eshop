@@ -10,7 +10,10 @@ import OrderItems from "../../components/order/OrderItems";
 import ShippingAddress from "../../components/order/ShippingAddress";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import { formatDate } from "../../utilities/formaters";
-import { useGetOrderQuery, useUpdateOrderStatusMutation } from "../../redux/order/orderApiSlice";
+import {
+  useGetOrderQuery,
+  useUpdateOrderStatusMutation,
+} from "../../redux/order/orderApiSlice";
 import apiSlice from "../../redux/apiSlice";
 
 const options = {
@@ -26,10 +29,15 @@ export default function AdminOrderDetailesPage() {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const { data: order, isFetching, error: fetchError } = useGetOrderQuery(params.id);
+  const {
+    data: order,
+    isFetching,
+    error: fetchError,
+  } = useGetOrderQuery(params.id);
   const [status, setStatus] = useState("");
 
-  const [updateOrderStatus, { isLoading, error: updateError }] = useUpdateOrderStatusMutation();
+  const [updateOrderStatus, { isLoading, error: updateError }] =
+    useUpdateOrderStatusMutation();
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
@@ -60,7 +68,11 @@ export default function AdminOrderDetailesPage() {
   return (
     <section id={styles["order-page"]}>
       <Container>
-        {fetchError && <ErrorMessage>{fetchError?.data?.message || fetchError.error}</ErrorMessage>}
+        {fetchError && (
+          <ErrorMessage>
+            {fetchError?.data?.message || fetchError.error}
+          </ErrorMessage>
+        )}
 
         <div className={styles.wrapper}>
           <div className={styles.detailes}>
@@ -80,7 +92,7 @@ export default function AdminOrderDetailesPage() {
             <div className={styles["order-detaile-group"]}>
               <h3>payment</h3>
 
-              {order?.isPaid ? (
+              {order?.paidAt ? (
                 <p>
                   Paid with {order?.paymentMethod} on&nbsp;
                   {formatDate(new Date(order?.paidAt ?? 0), options)}
@@ -100,25 +112,64 @@ export default function AdminOrderDetailesPage() {
             <Summary order={order} />
 
             <br />
-            {updateError && <ErrorMessage>{updateError?.data?.message || updateError.error}</ErrorMessage>}
+            {updateError && (
+              <ErrorMessage>
+                {updateError?.data?.message || updateError.error}
+              </ErrorMessage>
+            )}
 
             <fieldset>
               <legend>Update order status</legend>
               <form id="status" onSubmit={handleSubmit}>
                 <label>
-                  <input onChange={handleStatusChange} value="Processing" name="status" type="radio" checked={status === "Processing"} /> Processing
+                  <input
+                    onChange={handleStatusChange}
+                    value="Processing"
+                    name="status"
+                    type="radio"
+                    checked={status === "Processing"}
+                  />{" "}
+                  Processing
                 </label>
                 <label>
-                  <input onChange={handleStatusChange} value="Shipped" name="status" type="radio" checked={status === "Shipped"} /> Shipped
+                  <input
+                    onChange={handleStatusChange}
+                    value="Shipped"
+                    name="status"
+                    type="radio"
+                    checked={status === "Shipped"}
+                  />{" "}
+                  Shipped
                 </label>
                 <label>
-                  <input onChange={handleStatusChange} value="Delivered" name="status" type="radio" checked={status === "Delivered"} /> Delivered
+                  <input
+                    onChange={handleStatusChange}
+                    value="Delivered"
+                    name="status"
+                    type="radio"
+                    checked={status === "Delivered"}
+                  />{" "}
+                  Delivered
                 </label>
                 <label>
-                  <input onChange={handleStatusChange} value="Cancelled" name="status" type="radio" checked={status === "Cancelled"} /> Cancelled
+                  <input
+                    onChange={handleStatusChange}
+                    value="Cancelled"
+                    name="status"
+                    type="radio"
+                    checked={status === "Cancelled"}
+                  />{" "}
+                  Cancelled
                 </label>
                 <label>
-                  <input onChange={handleStatusChange} value="Refunded" name="status" type="radio" checked={status === "Refunded"} /> Refunded
+                  <input
+                    onChange={handleStatusChange}
+                    value="Refunded"
+                    name="status"
+                    type="radio"
+                    checked={status === "Refunded"}
+                  />{" "}
+                  Refunded
                 </label>
               </form>
               <button disabled={isLoading} form="status">

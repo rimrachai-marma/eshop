@@ -5,7 +5,11 @@ const Product = require("../models/product");
 const { round } = require("../utilities/formaters");
 const asyncHandler = require("../utilities/asyncHandler");
 const ErrorResponse = require("../utilities/errorResponse");
-const { create_order, capture_order, get_order_details } = require("../services/paypal");
+const {
+  create_order,
+  capture_order,
+  get_order_details,
+} = require("../services/paypal");
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -186,7 +190,6 @@ module.exports.captureOrder = asyncHandler(async (req, res) => {
     totalTax: Number(orderAmount.breakdown.tax_total.value),
     shippingPrice: Number(orderAmount.breakdown.shipping.value),
     grandTotal: Number(orderAmount.value),
-    isPaid: true,
     paidAt: Date(orderDetails.update_time),
     status: "Pending",
   });
@@ -204,7 +207,10 @@ module.exports.getUserOrder = asyncHandler(async (req, res) => {
     throw new ErrorResponse("Order not found", 404);
   }
 
-  if (req.user.role !== "admin" && req.user._id.toString() !== order.user._id.toString()) {
+  if (
+    req.user.role !== "admin" &&
+    req.user._id.toString() !== order.user._id.toString()
+  ) {
     throw new ErrorResponse("Access denied, not allowed", 403);
   }
 
@@ -223,7 +229,8 @@ module.exports.getUserOrderList = asyncHandler(async (req, res) => {
 // @route   GET /api/admin/orders
 // @access  Private/Admin
 module.exports.getOrderList = asyncHandler(async (req, res) => {
-  const pageSize = process.env.PAGINATION_LIMIT || 12;
+  const pageSize =
+    Number(req.query.pageSize || process.env.PAGINATION_LIMIT) || 12;
   const page = Number(req.query.page) || 1;
 
   const query = {};
@@ -238,18 +245,19 @@ module.exports.getOrderList = asyncHandler(async (req, res) => {
   if (req.query.ordered_after || req.query.ordered_before) {
     query.createdAt = {};
 
-    if (req.query.ordered_after) query.createdAt.$gte = new Date(req.query.ordered_after);
-    if (req.query.ordered_before) query.createdAt.$lt = new Date(req.query.ordered_before);
+    if (req.query.ordered_after)
+      query.createdAt.$gte = new Date(req.query.ordered_after);
+    if (req.query.ordered_before)
+      query.createdAt.$lt = new Date(req.query.ordered_before);
   }
 
-  if (req.query.paid) {
-    if (req.query.paid === "true") {
-      query.isPaid = true;
-    }
+  if (req.query.paid_after || req.query.paid_before) {
+    query.createdAt = {};
 
-    if (req.query.paid === "false") {
-      query.isPaid = false;
-    }
+    if (req.query.paid_after)
+      query.paidAt.$gte = new Date(req.query.paid_after);
+    if (req.query.ordered_before)
+      query.paidAt.$lt = new Date(req.query.paid_before);
   }
 
   const count = await Order.countDocuments(query);
@@ -269,7 +277,11 @@ module.exports.getOrderList = asyncHandler(async (req, res) => {
 
 module.exports.updateOrderStatus = asyncHandler(async (req, res) => {
   const { id, status } = req.params;
-  const updatedOrder = await Order.findOneAndUpdate({ orderId: id }, { status: status }, { new: true });
+  const updatedOrder = await Order.findOneAndUpdate(
+    { orderId: id },
+    { status: status },
+    { new: true }
+  );
 
   if (!updatedOrder) {
     throw new ErrorResponse("Order not found", 404);

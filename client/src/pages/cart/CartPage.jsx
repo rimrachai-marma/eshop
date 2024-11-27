@@ -86,9 +86,9 @@ function CartPage() {
 
             {cartItems.length === 0 && (
               <Message>
-                Your cart is empty!{" "}
+                Your cart is empty! &#8592;
                 <Link className={styles["back-btn"]} to="/">
-                  &#8592;back to homepage
+                  back to homepage
                 </Link>
               </Message>
             )}
@@ -116,7 +116,7 @@ function CartPage() {
 
             <button
               onClick={checkoutHandler}
-              disabled={cartItems.length === 0}
+              disabled={checkoutItems.length === 0}
               className={styles.checkout_btn}
             >
               Checkout

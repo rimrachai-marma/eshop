@@ -75,12 +75,6 @@ const orderSchema = new mongoose.Schema(
       default: 0.0,
     },
 
-    isPaid: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-
     paidAt: { type: Date },
 
     status: { type: String },

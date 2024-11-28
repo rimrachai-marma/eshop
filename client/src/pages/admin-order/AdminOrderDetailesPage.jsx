@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -35,6 +35,10 @@ export default function AdminOrderDetailesPage() {
     error: fetchError,
   } = useGetOrderQuery(params.id);
   const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    setStatus(order?.status);
+  }, [order]);
 
   const [updateOrderStatus, { isLoading, error: updateError }] =
     useUpdateOrderStatusMutation();
@@ -124,6 +128,16 @@ export default function AdminOrderDetailesPage() {
                 <label>
                   <input
                     onChange={handleStatusChange}
+                    value="Pending"
+                    name="status"
+                    type="radio"
+                    checked={status === "Pending"}
+                  />{" "}
+                  Pending
+                </label>
+                <label>
+                  <input
+                    onChange={handleStatusChange}
                     value="Processing"
                     name="status"
                     type="radio"
@@ -150,6 +164,16 @@ export default function AdminOrderDetailesPage() {
                     checked={status === "Delivered"}
                   />{" "}
                   Delivered
+                </label>
+                <label>
+                  <input
+                    onChange={handleStatusChange}
+                    value="Completed"
+                    name="status"
+                    type="radio"
+                    checked={status === "Completed"}
+                  />{" "}
+                  Completed
                 </label>
                 <label>
                   <input

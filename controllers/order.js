@@ -209,6 +209,7 @@ module.exports.getUserOrder = asyncHandler(async (req, res) => {
 
   if (
     req.user.role !== "admin" &&
+    req.user.role !== "superadmin" &&
     req.user._id.toString() !== order.user._id.toString()
   ) {
     throw new ErrorResponse("Access denied, not allowed", 403);

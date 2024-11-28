@@ -4,6 +4,7 @@ import styles from "./OrderDetailesPage.module.scss";
 import Container from "../../components/ui/Container";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import Summary from "../../components/order/Summary";
+import ErrorMessage from "../../components/ui/ErrorMessage";
 import OrderItems from "../../components/order/OrderItems";
 import ShippingAddress from "../../components/order/ShippingAddress";
 import { formatDate } from "../../utilities/formaters";
@@ -20,7 +21,7 @@ const options = {
 
 export default function OrderDetailesPage() {
   const params = useParams();
-  const { data: order, isFetching } = useGetOrderQuery(params.id);
+  const { data: order, isFetching, error } = useGetOrderQuery(params.id);
 
   if (isFetching) {
     return (
@@ -33,6 +34,12 @@ export default function OrderDetailesPage() {
   return (
     <section id={styles["order-page"]}>
       <Container>
+        {error && (
+          <ErrorMessage>
+            {error?.data?.message || fetchError.error}
+          </ErrorMessage>
+        )}
+
         <div className={styles.wrapper}>
           <div className={styles.detailes}>
             <h3 className={styles["order-id"]}>

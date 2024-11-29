@@ -28,11 +28,15 @@ const Sorting = () => {
     <>
       <label className={styles.label}>Sort by</label>
 
-      <select className={styles.select} value={`${search.get("sort")}-${search.get("order")}` || ""} onChange={handleChange}>
+      <select
+        className={styles.select}
+        value={`${search.get("sort")}-${search.get("order")}` || ""}
+        onChange={handleChange}
+      >
         <option value="">Default</option>
         <option value="price-desc">Price: High to Low</option>
         <option value="price-asc">Price: Low to High</option>
-        <option value="review-desc">Avg. Customer Review</option>
+        <option value="rating-desc">Avg. Customer Review</option>
       </select>
     </>
   );

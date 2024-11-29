@@ -12,6 +12,7 @@ module.exports.getProducts = asyncHandler(async (req, res) => {
   const pageSize = Number(
     req.query.pageSize || process.env.PAGINATION_LIMIT || 12
   );
+
   const page = Number(req.query.page) || 1;
 
   const query = {};
@@ -44,7 +45,6 @@ module.exports.getProducts = asyncHandler(async (req, res) => {
 
   // filter  by rating
   // rating=$gte:3
-
   if (req.query.rating) {
     query.rating = { $gte: Number(req.query.rating.split(":")[1]) };
   }
@@ -59,9 +59,11 @@ module.exports.getProducts = asyncHandler(async (req, res) => {
   }
 
   //sorting
+  // sort=price&order=desc
   let sort = { createdAt: -1 };
 
   if (
+    ["rating", "price"].includes(req.query.sort) &&
     req.query.sort &&
     (req.query.order === "asc" || req.query.order === "desc")
   ) {

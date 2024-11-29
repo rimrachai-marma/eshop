@@ -1,14 +1,18 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import styles from "./OrderDetailesPage.module.scss";
 import Container from "../../components/ui/Container";
-import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import Summary from "../../components/order/Summary";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import OrderItems from "../../components/order/OrderItems";
 import ShippingAddress from "../../components/order/ShippingAddress";
 import { formatDate } from "../../utilities/formaters";
-import { useGetOrderQuery } from "../../redux/order/orderApiSlice";
+import {
+  useCancelOrderMutation,
+  useGetOrderQuery,
+} from "../../redux/order/orderApiSlice";
+import Message from "../../components/ui/Message";
 
 const options = {
   hour: "numeric",
@@ -20,16 +24,29 @@ const options = {
 };
 
 export default function OrderDetailesPage() {
+  const [cancelationMessage, setCancelationMessage] = useState(null);
   const params = useParams();
-  const { data: order, isFetching, error } = useGetOrderQuery(params.id);
+  const {
+    data: order,
+    isFetching,
+    error,
+    refetch,
+  } = useGetOrderQuery(params.id);
 
-  if (isFetching) {
-    return (
-      <div className={styles["loader-container"]}>
-        <LoadingSpinner />
-      </div>
-    );
-  }
+  const [cancelOrder, { isLoading, error: cancelError }] =
+    useCancelOrderMutation();
+
+  const cancelHandler = async (id) => {
+    try {
+      const data = await cancelOrder(id).unwrap();
+
+      setCancelationMessage(data.message);
+
+      refetch();
+    } catch (err) {
+      console.error(err?.data?.message || err.error);
+    }
+  };
 
   return (
     <section id={styles["order-page"]}>
@@ -74,8 +91,26 @@ export default function OrderDetailesPage() {
             </div>
           </div>
 
-          <div className={styles.amount}>
+          <div className={styles.summury_and_actions}>
             <Summary order={order} />
+
+            {cancelError && (
+              <ErrorMessage>
+                {cancelError?.data?.message || cancelError.error}
+              </ErrorMessage>
+            )}
+
+            {cancelationMessage && <Message> {cancelationMessage}</Message>}
+
+            {["Pending", "Processing"].includes(order?.status) && (
+              <button
+                disabled={isLoading}
+                onClick={() => cancelHandler(order?.orderId)}
+                className={styles.btn}
+              >
+                {isLoading ? "Cancelling.." : "Cancell"}
+              </button>
+            )}
           </div>
         </div>
       </Container>

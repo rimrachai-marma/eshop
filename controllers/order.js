@@ -276,6 +276,9 @@ module.exports.getOrderList = asyncHandler(async (req, res) => {
   res.status(200).send({ orders, page, pages });
 });
 
+// @desc    update order status
+// @route   PATCH /api/admin/orders/:id/status/:status
+// @access  Private/Admin
 module.exports.updateOrderStatus = asyncHandler(async (req, res) => {
   const { id, status } = req.params;
   const updatedOrder = await Order.findOneAndUpdate(
@@ -289,4 +292,28 @@ module.exports.updateOrderStatus = asyncHandler(async (req, res) => {
   }
 
   res.status(200).send({ updatedOrder, message: "Product status updated" });
+});
+
+// @desc    user order cancel
+// @route   PATCH /api/orders/:id/cancels
+// @access  Private
+module.exports.cancelOrder = asyncHandler(async (req, res) => {
+  const order = await Order.findOne({ orderId: req.params.id });
+
+  if (!order) {
+    throw new ErrorResponse("Order not found", 404);
+  }
+
+  if (!["Pending", "Processing"].includes(order.status)) {
+    throw new ErrorResponse(
+      "Order cannot be cancelled at its current status",
+      400
+    );
+  }
+
+  order.status = "Cancelled";
+
+  const updatedOrder = await order.save();
+
+  res.status(200).send({ updatedOrder, message: "Product cancelled" });
 });

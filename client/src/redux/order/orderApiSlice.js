@@ -37,9 +37,23 @@ const orderApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["ORDERSLIST"], // ORDER
     }),
+
+    // user order cancel
+    cancelOrder: builder.mutation({
+      query: (id) => ({
+        url: `/orders/${id}/cancels`,
+        method: "PATCH",
+      }),
+    }),
   }),
 });
 
-export const { useGetOrderQuery, useGetUserOrdersQuery, useGetOrdersQuery, useUpdateOrderStatusMutation } = orderApiSlice;
+export const {
+  useGetOrderQuery,
+  useGetUserOrdersQuery,
+  useGetOrdersQuery,
+  useUpdateOrderStatusMutation,
+  useCancelOrderMutation,
+} = orderApiSlice;
 
 export default orderApiSlice;

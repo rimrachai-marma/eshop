@@ -115,7 +115,6 @@ export default function AdminOrderDetailesPage() {
           <div className={styles.summury_and_actions}>
             <Summary order={order} />
 
-            <br />
             {updateError && (
               <ErrorMessage>
                 {updateError?.data?.message || updateError.error}
@@ -128,21 +127,11 @@ export default function AdminOrderDetailesPage() {
                 <label>
                   <input
                     onChange={handleStatusChange}
-                    value="Pending"
-                    name="status"
-                    type="radio"
-                    checked={status === "Pending"}
-                  />{" "}
-                  Pending
-                </label>
-                <label>
-                  <input
-                    onChange={handleStatusChange}
                     value="Processing"
                     name="status"
                     type="radio"
                     checked={status === "Processing"}
-                  />{" "}
+                  />
                   Processing
                 </label>
                 <label>
@@ -152,7 +141,7 @@ export default function AdminOrderDetailesPage() {
                     name="status"
                     type="radio"
                     checked={status === "Shipped"}
-                  />{" "}
+                  />
                   Shipped
                 </label>
                 <label>
@@ -162,7 +151,7 @@ export default function AdminOrderDetailesPage() {
                     name="status"
                     type="radio"
                     checked={status === "Delivered"}
-                  />{" "}
+                  />
                   Delivered
                 </label>
                 <label>
@@ -172,7 +161,7 @@ export default function AdminOrderDetailesPage() {
                     name="status"
                     type="radio"
                     checked={status === "Completed"}
-                  />{" "}
+                  />
                   Completed
                 </label>
                 <label>
@@ -182,7 +171,7 @@ export default function AdminOrderDetailesPage() {
                     name="status"
                     type="radio"
                     checked={status === "Cancelled"}
-                  />{" "}
+                  />
                   Cancelled
                 </label>
                 <label>
@@ -192,8 +181,28 @@ export default function AdminOrderDetailesPage() {
                     name="status"
                     type="radio"
                     checked={status === "Refunded"}
-                  />{" "}
+                  />
                   Refunded
+                </label>
+                <label>
+                  <input
+                    onChange={handleStatusChange}
+                    value="Returned"
+                    name="status"
+                    type="radio"
+                    checked={status === "Returned"}
+                  />
+                  Returned
+                </label>
+                <label>
+                  <input
+                    onChange={handleStatusChange}
+                    value="On Hold"
+                    name="status"
+                    type="radio"
+                    checked={status === "On Hold"}
+                  />
+                  On Hold
                 </label>
               </form>
               <button disabled={isLoading} form="status">

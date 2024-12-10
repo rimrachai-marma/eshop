@@ -1,8 +1,9 @@
-const endpoint_url =
-  process.env.NODE_ENV === "production"
-    ? "https://api-m.paypal.com"
-    : "https://api-m.sandbox.paypal.com";
+// const endpoint_url =
+//   process.env.NODE_ENV === "production"
+//     ? "https://api-m.paypal.com"
+//     : "https://api-m.sandbox.paypal.com";
 
+const endpoint_url = "https://api-m.sandbox.paypal.com";
 const client_id = process.env.PAYPAL_CLIENT_ID;
 const client_secret = process.env.PAYPAL_CLIENT_SECRET;
 

@@ -6,8 +6,7 @@ function Footer() {
     <footer id={styles.footer}>
       <Container>
         <p className={styles.footer}>
-          Copyright &copy; e-shop, {new Date().getFullYear()}. All rights
-          reserved.
+          &copy; e-shop, {new Date().getFullYear()}.. All rights reserved.
         </p>
       </Container>
     </footer>
